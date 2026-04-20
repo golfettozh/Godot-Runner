@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://dbiji08vw1i2t"]
+
+[ext_resource type="Script" uid="uid://fmft41ceibxs" path="res://Scripts/main.gd" id="1_8gbba"]
+[ext_resource type="PackedScene" uid="uid://dcq6jhlttqosa" path="res://Scenes/player.tscn" id="1_jjgbg"]
+[ext_resource type="PackedScene" uid="uid://mk2vjuqel6r3" path="res://Scenes/level.tscn" id="2_bo1nx"]
+[ext_resource type="Script" uid="uid://d0ta1717drai4" path="res://Scripts/spawn_manager.gd" id="4_jjvhh"]
+[ext_resource type="FontFile" uid="uid://cn7s38j0lli8k" path="res://Fonts/PressStart2P-Regular.ttf" id="5_kry3j"]
+[ext_resource type="PackedScene" uid="uid://ctu3i3ful2jc1" path="res://Scenes/game_over_layer.tscn" id="6_21xkr"]
+[ext_resource type="PackedScene" uid="uid://ceeir4vj7hcvi" path="res://Scenes/mobile_buttons.tscn" id="7_6bp64"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_21xkr"]
+font = ExtResource("5_kry3j")
+font_size = 8
+font_color = Color(0.14623776, 0.3858594, 0.6373142, 1)
+
+[node name="Main" type="Node2D" unique_id=459038426]
+script = ExtResource("1_8gbba")
+
+[node name="Player" parent="." unique_id=755447933 instance=ExtResource("1_jjgbg")]
+position = Vector2(53, 150)
+
+[node name="Level" parent="." unique_id=2125741937 instance=ExtResource("2_bo1nx")]
+
+[node name="SpawnManager" type="Node2D" parent="." unique_id=1000203749]
+script = ExtResource("4_jjvhh")
+
+[node name="TimerSpawn" type="Timer" parent="." unique_id=1405732367]
+wait_time = 1.5
+autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=515210001]
+
+[node name="LabelScore" type="Label" parent="CanvasLayer" unique_id=1345241266]
+offset_left = 16.0
+offset_top = 12.0
+offset_right = 98.0
+offset_bottom = 28.0
+text = "Score: 0"
+label_settings = SubResource("LabelSettings_21xkr")
+
+[node name="GameOverLayer" parent="." unique_id=53815436 instance=ExtResource("6_21xkr")]
+visible = false
+
+[node name="mobile_buttons" parent="." unique_id=687652512 instance=ExtResource("7_6bp64")]
+show_behind_parent = true
+top_level = true
+position = Vector2(3, 143)
+
+[connection signal="timeout" from="TimerSpawn" to="SpawnManager" method="_on_timer_spawn_timeout"]

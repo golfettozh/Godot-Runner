@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://c4lkes5tdvkoc"]
+
+[ext_resource type="Texture2D" uid="uid://c56qw0o83rqgs" path="res://Sprites/inimigos.png" id="1_k8cip"]
+[ext_resource type="Script" uid="uid://c8mvnqa8fks7x" path="res://Scripts/enemy_fly.gd" id="1_kseik"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kseik"]
+size = Vector2(23, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1jxp"]
+atlas = ExtResource("1_k8cip")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jagd2"]
+atlas = ExtResource("1_k8cip")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qr5r"]
+atlas = ExtResource("1_k8cip")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1dqh7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g1jxp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jagd2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qr5r")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 8.0
+}]
+
+[node name="EnemyFly" type="Area2D" unique_id=1845667673 groups=["dangerous"]]
+script = ExtResource("1_kseik")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=572723538 groups=["dangerous"]]
+position = Vector2(0.5, -1)
+shape = SubResource("RectangleShape2D_kseik")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1825617073]
+sprite_frames = SubResource("SpriteFrames_1dqh7")
+animation = &"fly"
+autoplay = "fly"
+frame_progress = 0.1688352

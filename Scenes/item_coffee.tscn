@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://dgjagisvl80mb"]
+
+[ext_resource type="Script" uid="uid://bryhudl1nr5a4" path="res://Scripts/item_coffee.gd" id="1_mvoiu"]
+[ext_resource type="Texture2D" uid="uid://bh5mu87oa6dv6" path="res://Sprites/coletavel.png" id="1_qleji"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mvoiu"]
+size = Vector2(14, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68y2c"]
+atlas = ExtResource("1_qleji")
+region = Rect2(0, 0, 17, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lb4e"]
+atlas = ExtResource("1_qleji")
+region = Rect2(17, 0, 17, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hwgih"]
+atlas = ExtResource("1_qleji")
+region = Rect2(34, 0, 17, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3jlq"]
+atlas = ExtResource("1_qleji")
+region = Rect2(51, 0, 17, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4prqf"]
+atlas = ExtResource("1_qleji")
+region = Rect2(68, 0, 17, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x1i5n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_68y2c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0lb4e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hwgih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t3jlq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4prqf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="ItemCoffee" type="Area2D" unique_id=1845667673 groups=["collectible"]]
+script = ExtResource("1_mvoiu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=572723538]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_mvoiu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=22263977]
+sprite_frames = SubResource("SpriteFrames_x1i5n")
+autoplay = "default"
+frame_progress = 0.538292

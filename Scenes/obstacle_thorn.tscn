@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bdc2rqlvqwyhv"]
+
+[ext_resource type="Script" uid="uid://bi4telib5ktny" path="res://Scripts/obstacle_thorn.gd" id="1_vic62"]
+[ext_resource type="Texture2D" uid="uid://k05n7yoinbsc" path="res://Sprites/obstaculo.png" id="1_vjte4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vic62"]
+size = Vector2(13, 4)
+
+[node name="ObstacleThorn" type="Area2D" unique_id=1845667673 groups=["dangerous"]]
+script = ExtResource("1_vic62")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=879843355]
+texture = ExtResource("1_vjte4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=572723538]
+position = Vector2(-0.5, 6)
+shape = SubResource("RectangleShape2D_vic62")
